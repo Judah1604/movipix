@@ -1,0 +1,35 @@
+.navbar {
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: start !important;
+    gap: 30px;
+    padding: 20px 0 !important;
+    background-color: rgba(255, 255, 255, 0.05);
+
+    .active {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+
+        ion-icon {
+            opacity: 1 !important;
+        }
+    }
+
+    .menuItem {
+        background-color: rgba(255, 255, 255, 0.05);
+        display: flex;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        ion-icon {
+            font-size: 2em;
+            opacity: 0.8;
+            color: white;
+        }
+    }
+}

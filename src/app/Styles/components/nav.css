@@ -1,0 +1,30 @@
+.navbar {
+  flex-direction: column;
+  border-radius: 10px;
+  justify-content: start !important;
+  gap: 30px;
+  padding: 20px 0 !important;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.navbar .active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.navbar .active ion-icon {
+  opacity: 1 !important;
+}
+.navbar .menuItem {
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.navbar .menuItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.navbar .menuItem ion-icon {
+  font-size: 2em;
+  opacity: 0.8;
+  color: white;
+}/*# sourceMappingURL=nav.css.map */
