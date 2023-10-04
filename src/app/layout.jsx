@@ -1,9 +1,10 @@
 import { Outfit } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Script from "next/script";
-import '@/../bootstrap/dist/css/bootstrap.min.css'
+import "@/../bootstrap/dist/css/bootstrap.min.css";
+import { ReduxProvider } from "@/redux/provider";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ weight: '400', subsets: ["latin"] });
 
 export const metadata = {
     title: "MoviPix - Movies Site",
@@ -22,12 +23,16 @@ export default function RootLayout({ children }) {
             </head>
             <body className={outfit.className}>
                 <Navbar />
-                {children}
-                <footer className="text-center mt-5">
-                    Made by Judah Oyedele (
-                    <a href="https://twitter.com/judahoyedele">@judahoyedele</a>
-                    )
-                </footer>
+                <main>
+                    <ReduxProvider>{children}</ReduxProvider>
+                    <footer className="text-center mt-5">
+                        Made by Judah Oyedele (
+                        <a href="https://twitter.com/judahoyedele">
+                            @judahoyedele
+                        </a>
+                        )
+                    </footer>
+                </main>
             </body>
             <Script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" />
             <Script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" />
