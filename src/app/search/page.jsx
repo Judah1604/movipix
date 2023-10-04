@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
 import MovieCard from "../components/MovieCard";
