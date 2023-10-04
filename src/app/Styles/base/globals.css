@@ -53,9 +53,21 @@ body::before {
   main {
     padding: 10px !important;
   }
+  main .banner .logo {
+    position: static;
+    padding: 10px;
+  }
 }
 @media screen and (max-width: 375px) {
   .navbar {
     gap: 30px !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .navbar {
+    gap: 20px !important;
+  }
+  .navbar ion-icon {
+    font-size: 1.7em !important;
   }
 }/*# sourceMappingURL=globals.css.map */

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
 import { useDispatch, useSelector } from "react-redux";

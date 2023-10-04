@@ -90,6 +90,13 @@ export default function Home() {
                     }
                 >
                     <Image
+                        className="img-fluid logo"
+                        src={"/images/logo.png"}
+                        alt="MoviPix"
+                        width={150}
+                        height={100}
+                    />
+                    <Image
                         className="img-fluid image"
                         src={imgPath + bannerMovie.backdrop_path}
                         alt={bannerMovie.title}
@@ -108,13 +115,7 @@ export default function Home() {
                                 ")",
                         }}
                     ></div>
-                    <Image
-                        className="img-fluid logo"
-                        src={"/images/logo.png"}
-                        alt="MoviPix"
-                        width={150}
-                        height={100}
-                    />
+
                     <div className="text">
                         <div className="content">
                             <h1>{bannerMovie.title}</h1>
