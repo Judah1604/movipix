@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Script from "next/script";
 import "@/../bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "@/redux/provider";
+import MovieDetails from "./components/MovieDetails";
 
 const outfit = Outfit({ weight: '400', subsets: ["latin"] });
 
@@ -24,7 +25,10 @@ export default function RootLayout({ children }) {
             <body className={outfit.className}>
                 <Navbar />
                 <main>
-                    <ReduxProvider>{children}</ReduxProvider>
+                    <ReduxProvider>
+                        {children}
+                        <MovieDetails />
+                    </ReduxProvider>
                     <footer className="text-center mt-5">
                         Made by Judah Oyedele (
                         <a href="https://twitter.com/judahoyedele">

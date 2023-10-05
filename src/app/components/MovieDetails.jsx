@@ -1,26 +1,24 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "@/redux/features/favourites";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { update } from "@/redux/features/details";
 
 export default function MovieDetails() {
     const [data, setData] = useState({});
-    const [isAdded, setIsAdded] = useState(false);
-    const params = useParams(),
-        id = params.movie
+    const details = useSelector((state) => state.details.value);
 
     const dispatch = useDispatch();
     const imgPath = "https://image.tmdb.org/t/p/original";
 
     useEffect(() => {
         fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=bbe7a02e2ee350e3770f054fe907f423`
+            `https://api.themoviedb.org/3/movie/${details.id}?api_key=bbe7a02e2ee350e3770f054fe907f423`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -29,7 +27,7 @@ export default function MovieDetails() {
             .catch((error) => {
                 console.error("Error fetching movie data:", error);
             });
-    }, [id]);
+    }, [details.id]);
 
     const genres = data.genres || [];
     const newGenres = genres.map((genre) => genre.name);
@@ -38,23 +36,14 @@ export default function MovieDetails() {
         dispatch(
             add({ id: data.id, title: data.title, image: data.poster_path })
         );
-        setConfirmationActive();
     };
 
-    const setConfirmationActive = () => {
-        setIsAdded(true);
-
-        setTimeout(() => {
-            setIsAdded(false);
-        }, 2000);
-    };
+    const closeDialog = () => {
+        dispatch(update({id: details.id, status: false}))
+    }
 
     return (
-        <div className="details">
-            <div className={isAdded ? "confirmation active" : "confirmation"}>
-                <ion-icon name="checkmark-circle"></ion-icon>
-                You have successfully added a movie to your watchlist
-            </div>
+        <div className={details.status ? "details active" : "details"}>
             <div className="banner">
                 <div
                     className={
@@ -92,10 +81,22 @@ export default function MovieDetails() {
                             <p className="overview">{data.overview}</p>
                             <p>Runtime: {data.runtime} minutes</p>
                             <p>Release Date: {data.release_date}</p>
-                            <button className="btn" onClick={addToFavourites}>
-                                <ion-icon name="add-outline"></ion-icon> Add to
-                                Watchlist
-                            </button>
+                            <div className="d-flex">
+                                <button
+                                    className="btn"
+                                    onClick={addToFavourites}
+                                >
+                                    <ion-icon name="add-outline"></ion-icon> Add
+                                    to Watchlist
+                                </button>
+                                <button
+                                    className="btn mx-3"
+                                    onClick={closeDialog}
+                                >
+                                    <ion-icon name="close-outline"></ion-icon>
+                                    Close
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
