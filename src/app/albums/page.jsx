@@ -5,13 +5,16 @@ import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
 import MovieCard from "../components/MovieCard";
+import Confirmation from "../components/Confirmation";
 
 function Albums() {
-    const favourites = useSelector((state) => state.favourites.value);
+    const favourites = useSelector((state) => state.favourites.value),
+        confirmation = useSelector((state) => state.confirmation.value);
 
     const imgPath = "https://image.tmdb.org/t/p/original";
     return (
         <div className="albums">
+            <Confirmation confirmation={confirmation} />
             <h1>Albums</h1>
             <p>**Note: Click on a movie card to see the details</p>
             {favourites.length == 0 ? (

@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { changeStatus } from "@/redux/features/confirmation";
 
-function MovieCard({ id, title, image, handleConfirmationActive, isAlbum }) {
+function MovieCard({ id, title, image, isAlbum }) {
     const dispatch = useDispatch();
     const [isAdded, setIsAdded] = useState(false);
 
@@ -16,7 +17,11 @@ function MovieCard({ id, title, image, handleConfirmationActive, isAlbum }) {
             dispatch(deleteItem(id));
         } else {
             dispatch(add({ id: id, title: title, image: image }));
-            handleConfirmationActive();
+            dispatch(changeStatus(true));
+
+            setTimeout(() => {
+                dispatch(changeStatus(false));
+            }, 2000);
         }
     };
 

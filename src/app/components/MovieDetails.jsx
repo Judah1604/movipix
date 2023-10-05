@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add } from "@/redux/features/favourites";
 import { useEffect, useState } from "react";
 import { update } from "@/redux/features/details";
+import { changeStatus } from "@/redux/features/confirmation";
 
 export default function MovieDetails() {
     const [data, setData] = useState({});
@@ -36,6 +37,11 @@ export default function MovieDetails() {
         dispatch(
             add({ id: data.id, title: data.title, image: data.poster_path })
         );
+        dispatch(changeStatus(true));
+
+        setTimeout(() => {
+            dispatch(changeStatus(false));
+        }, 2000);
     };
 
     const closeDialog = () => {

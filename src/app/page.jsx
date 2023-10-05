@@ -6,21 +6,15 @@ import MovieCard from "./components/MovieCard";
 import "./Styles/base/globals.css";
 import "./Styles/components/main.css";
 import "./Styles/components/utils.css";
+import Confirmation from "./components/Confirmation";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-    const [toggleConfirmation, setToggleConfirmation] = useState(false),
-        [bannerMovieId, setBannerMovieId] = useState(0),
+    const [bannerMovieId, setBannerMovieId] = useState(0),
         [bannerMovie, setBannerMovie] = useState({}),
         [movies, setMovies] = useState([]),
-        imgPath = "https://image.tmdb.org/t/p/original";
-
-    const handleConfirmationActive = () => {
-        setToggleConfirmation(true);
-
-        setTimeout(() => {
-            setToggleConfirmation(false);
-        }, 2000);
-    };
+        imgPath = "https://image.tmdb.org/t/p/original",
+        confirmation = useSelector((state) => state.confirmation.value);
 
     useEffect(() => {
         async function fetchMovies() {
@@ -66,15 +60,8 @@ export default function Home() {
 
     return (
         <div>
-            <div
-                className={
-                    toggleConfirmation ? "confirmation active" : "confirmation"
-                }
-            >
-                <ion-icon name="checkmark-circle"></ion-icon>
-                You have successfully added a movie to your watchlist
-            </div>
             <div className="banner">
+                <Confirmation confirmation={confirmation} />
                 <div
                     className={
                         Object.keys(bannerMovie).length === 0
@@ -147,9 +134,6 @@ export default function Home() {
                                 title={movie.title}
                                 image={imgPath + movie.poster_path}
                                 key={movie.id}
-                                handleConfirmationActive={
-                                    handleConfirmationActive
-                                }
                             />
                         ))}
                     </div>

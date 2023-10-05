@@ -4,8 +4,9 @@ import Script from "next/script";
 import "@/../bootstrap/dist/css/bootstrap.min.css";
 import { ReduxProvider } from "@/redux/provider";
 import MovieDetails from "./components/MovieDetails";
+import Confirmation from "./components/Confirmation";
 
-const outfit = Outfit({ weight: '400', subsets: ["latin"] });
+const outfit = Outfit({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
     title: "MoviPix - Movies Site",

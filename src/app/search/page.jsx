@@ -5,13 +5,15 @@ import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
 import MovieCard from "../components/MovieCard";
+import { useSelector } from "react-redux";
+import Confirmation from "../components/Confirmation";
 
 function Search() {
-    const [toggleConfirmation, setToggleConfirmation] = useState(false);
     const [query, setQuery] = useState("");
     const [popularMovies, setPopularMovies] = useState([]);
     const [moviesByQuery, setMoviesByQuery] = useState([]);
-    const imgPath = "https://image.tmdb.org/t/p/original";
+    const imgPath = "https://image.tmdb.org/t/p/original",
+        confirmation = useSelector((state) => state.confirmation.value);
 
     useEffect(() => {
         async function fetchPopularMovies() {
@@ -49,24 +51,9 @@ function Search() {
         e.preventDefault();
     };
 
-    const handleConfirmationActive = () => {
-        setToggleConfirmation(true);
-
-        setTimeout(() => {
-            setToggleConfirmation(false);
-        }, 2000);
-    };
-
     return (
         <>
-            <div
-                className={
-                    toggleConfirmation ? "confirmation active" : "confirmation"
-                }
-            >
-                <ion-icon name="checkmark-circle"></ion-icon>
-                You have successfully added a movie to your watchlist
-            </div>
+            <Confirmation confirmation={confirmation} />
             <div className="search">
                 <h1 className="mx-2">Search</h1>
                 <form
@@ -106,7 +93,6 @@ function Search() {
                                 title={movie.title}
                                 image={imgPath + movie.poster_path}
                                 key={movie.id}
-                                handleConfirmationActive={handleConfirmationActive}
                             />
                         ))}
                     </div>
@@ -126,7 +112,6 @@ function Search() {
                                 title={movie.title}
                                 image={imgPath + movie.poster_path}
                                 key={movie.id}
-                                handleConfirmationActive={handleConfirmationActive}
                             />
                         ))}
                     </div>
