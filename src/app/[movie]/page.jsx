@@ -4,14 +4,16 @@ import Image from "next/image";
 import "../Styles/base/globals.css";
 import "../Styles/components/main.css";
 import "../Styles/components/utils.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { add } from "@/redux/features/favourites";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
 export default function MovieDetails() {
     const [data, setData] = useState({});
     const [isAdded, setIsAdded] = useState(false);
-    const id = useSelector(state => state.id.value)
+    const params = useParams(),
+        id = params.movie
 
     const dispatch = useDispatch();
     const imgPath = "https://image.tmdb.org/t/p/original";

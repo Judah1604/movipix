@@ -1,5 +1,4 @@
 import { add, deleteItem } from '@/redux/features/favourites';
-import { changeId } from "@/redux/features/id";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -24,13 +23,9 @@ function MovieCard({ id, title, image, handleConfirmationActive, isAlbum }) {
         dispatch(deleteItem(id));
     }
 
-    const updateID = () => {
-        dispatch(changeId(id))
-    }
-
     return (
         <div className="movie shadow">
-            <Link href={`/details`}>
+            <Link href={`/${id}`}>
                 <Image
                     className="image img-fluid"
                     src={image}
@@ -38,7 +33,6 @@ function MovieCard({ id, title, image, handleConfirmationActive, isAlbum }) {
                     width={200}
                     height={200}
                     layout="responsive"
-                    onClick={updateID}
                 />
             </Link>
             {isAlbum ? (
