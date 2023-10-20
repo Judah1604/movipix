@@ -1,7 +1,6 @@
 import { add, deleteItem } from "@/redux/features/favourites";
-import { changeId, update } from "@/redux/features/details";
+import { changeDetails } from "@/redux/features/details";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeStatus } from "@/redux/features/confirmation";
@@ -30,7 +29,7 @@ function MovieCard({ id, title, image, isAlbum }) {
     };
 
     const updateDetails = () => {
-        dispatch(update({ id: id, status: true }));
+        dispatch(changeDetails({ id: id, status: true }));
     };
 
     return (

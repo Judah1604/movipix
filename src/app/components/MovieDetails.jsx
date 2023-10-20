@@ -7,7 +7,7 @@ import "../Styles/components/utils.css";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "@/redux/features/favourites";
 import { useEffect, useState } from "react";
-import { update } from "@/redux/features/details";
+import { changeDetails } from "@/redux/features/details";
 import { changeStatus } from "@/redux/features/confirmation";
 
 export default function MovieDetails() {
@@ -45,7 +45,7 @@ export default function MovieDetails() {
     };
 
     const closeDialog = () => {
-        dispatch(update({id: details.id, status: false}))
+        dispatch(changeDetails({ id: details.id, status: false }));
     }
 
     return (

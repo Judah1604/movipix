@@ -8,7 +8,7 @@ export const details = createSlice({
         value: initialStateValue
     },
     reducers: {
-        update: (state, action) => {
+        changeDetails: (state, action) => {
             state.value = action.payload
         }
     },
@@ -16,4 +16,4 @@ export const details = createSlice({
 
 export default details.reducer;
 
-export const { update } = details.actions;
+export const { changeDetails } = details.actions;

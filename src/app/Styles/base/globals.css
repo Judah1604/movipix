@@ -26,7 +26,7 @@ body::before {
   .navbar {
     position: fixed;
     z-index: 20;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     background-color: rgba(0, 0, 0, 0.4) !important;
     flex-direction: row !important;
@@ -46,14 +46,17 @@ body::before {
   .banner .text {
     position: relative !important;
     background: none;
-    border-radius: 7px;
+    border-radius: 0px 0px 7px 7px;
+  }
+  .banner .text .content {
+    margin-bottom: 70px;
   }
 }
 @media screen and (max-width: 425px) {
-  main {
+  .main {
     padding: 10px !important;
   }
-  main .banner .logo {
+  .main .banner .logo {
     position: static;
     padding: 10px;
   }

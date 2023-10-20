@@ -24,9 +24,9 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body className={outfit.className}>
-                <Navbar />
                 <main>
                     <ReduxProvider>
+                        <Navbar />
                         {children}
                         <MovieDetails />
                     </ReduxProvider>
