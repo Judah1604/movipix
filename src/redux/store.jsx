@@ -9,6 +9,6 @@ export const store = configureStore({
         favourites: favouritesReducer,
         details: detailsReducer,
         confirmation: confirmationReducer,
-        albumsStatus: albumsStatusReducer,
+        albumsStatus: albumsStatusReducer
     },
 });

@@ -3,14 +3,13 @@
 import { useState } from "react";
 import "../Styles/components/nav.css";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeDetails } from "@/redux/features/details";
 import { changeAlbumsStatus } from "@/redux/features/albumsStatus";
 
 function Navbar() {
     const [selectedIconIndex, setSelectedIconIndex] = useState(0);
     const dispatch = useDispatch();
-    const albumsStatus = useSelector((state) => state.albumsStatus.value);
 
     const items = [
         { inactive: "home-outline", active: "home" },
@@ -18,6 +17,7 @@ function Navbar() {
         {
             inactive: "albums-outline",
             active: "albums",
+            isAlbums: true,
         },
         {
             inactive: "settings-outline",
@@ -26,15 +26,24 @@ function Navbar() {
     ];
 
     const closeDialogs = () => {
-        dispatch(changeDetails(false));
-        dispatch(changeAlbumsStatus(true));
+        dispatch(changeDetails({ id: 0, status: false }));
+
+        for (const item of items) {
+            if (item.isAlbums) {
+                dispatch(changeAlbumsStatus(true));
+            }
+        }
     };
 
     return (
         <div className="navbar">
             {items.map((item, index) => (
-                <Link href={item.linkUrl ? item.linkUrl : "/"} key={index}>
-                    <div className="menuItem" onClick={closeDialogs}>
+                <Link
+                    href={item.linkUrl ? item.linkUrl : "/"}
+                    key={index}
+                    onClick={closeDialogs}
+                >
+                    <div className="menuItem">
                         <ion-icon
                             name={
                                 selectedIconIndex === index
