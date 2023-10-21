@@ -1,55 +1,3 @@
-.search .searchBar {
-  position: relative;
-}
-.search .searchBar input {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  padding: 0.7em;
-  padding-left: 3em;
-  margin-top: 20px;
-}
-.search .searchBar input:focus {
-  outline: none;
-  box-shadow: none;
-}
-.search .searchBar input::-moz-placeholder {
-  color: rgb(92, 92, 92);
-}
-.search .searchBar input::placeholder {
-  color: rgb(92, 92, 92);
-}
-.search .searchBar ion-icon {
-  font-size: 1.4em;
-}
-.search .searchBar .icon {
-  top: 13px;
-  display: flex;
-  position: absolute;
-}
-.search .searchBar .search-icon {
-  left: 15px;
-}
-.search .searchBar .delete-icon {
-  right: 7px;
-  cursor: pointer;
-  padding: 5px;
-  top: 7px;
-  background-color: transparent;
-  border-radius: 5px;
-  transition: 0.3s ease;
-}
-.search .searchBar .delete-icon:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.albums h1 {
-  margin: 15px;
-}
-.albums p {
-  margin-bottom: 20px;
-}
-
 .confirmation {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
   padding: 30px;
@@ -73,8 +21,8 @@
   color: #00c100;
 }
 
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr) !important;
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
 }
 
 button.btn {
@@ -106,6 +54,19 @@ button.btn ion-icon {
   filter: blur(50px) brightness(0.5);
 }
 
+.loader-wrapper {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.loader-wrapper .loader {
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05));
+  background-size: 200%;
+  animation: bg-pan 3s infinite linear;
+  border-radius: 7px;
+  padding: 170px 100px;
+}
+
 .confirmation.active {
   transform: translateX(-50%) translateY(0);
 }
@@ -119,5 +80,13 @@ button.btn ion-icon {
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes bg-pan {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 200%;
   }
 }/*# sourceMappingURL=utils.css.map */

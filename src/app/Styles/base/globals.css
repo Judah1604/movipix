@@ -1,9 +1,6 @@
 body {
   background-color: #040404 !important;
   color: white !important;
-  display: grid;
-  grid-template-columns: 0.8fr 10fr;
-  gap: 10px;
   overflow: hidden;
   margin: 10px !important;
 }
@@ -19,14 +16,20 @@ body::before {
   opacity: 0.8;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 0.8fr 10fr;
+  gap: 10px;
+}
+
 @media screen and (max-width: 900px) {
-  body {
+  main {
     grid-template-columns: unset;
   }
   .navbar {
     position: fixed;
     z-index: 20;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     background-color: rgba(0, 0, 0, 0.4) !important;
     flex-direction: row !important;
@@ -46,10 +49,10 @@ body::before {
   .banner .text {
     position: relative !important;
     background: none;
-    border-radius: 0px 0px 7px 7px;
+    border-radius: 7px;
   }
   .banner .text .content {
-    margin-bottom: 70px;
+    margin-bottom: 80px;
   }
 }
 @media screen and (max-width: 425px) {
@@ -59,6 +62,13 @@ body::before {
   .main .banner .logo {
     position: static;
     padding: 10px;
+  }
+  .details .banner .blur {
+    height: 30% !important;
+    top: 10px !important;
+  }
+  .details .banner .text {
+    border-radius: 0 0 7px 7px !important;
   }
 }
 @media screen and (max-width: 375px) {

@@ -53,7 +53,7 @@
   justify-content: flex-end;
 }
 
-.details {
+.panel-overlay {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
@@ -65,6 +65,11 @@
   padding: 10px;
   overflow: auto;
 }
+
+.panel-overlay.active {
+  transform: translateY(0%);
+}
+
 .details .banner .text {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6), transparent);
   padding: 30px;
@@ -91,21 +96,66 @@
   border-radius: 10px;
 }
 
-.details.active {
-  transform: translateY(0%);
+.search .searchBar {
+  position: relative;
+}
+.search .searchBar input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.7em;
+  padding-left: 3em;
+  margin-top: 20px;
+}
+.search .searchBar input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.search .searchBar input::-moz-placeholder {
+  color: rgb(92, 92, 92);
+}
+.search .searchBar input::placeholder {
+  color: rgb(92, 92, 92);
+}
+.search .searchBar ion-icon {
+  font-size: 1.4em;
+}
+.search .searchBar .icon {
+  top: 13px;
+  display: flex;
+  position: absolute;
+}
+.search .searchBar .search-icon {
+  left: 15px;
+}
+.search .searchBar .delete-icon {
+  right: 7px;
+  cursor: pointer;
+  padding: 5px;
+  top: 7px;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.search .searchBar .delete-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.loader-wrapper {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.albums h1 {
+  margin: 15px;
 }
-.loader-wrapper .loader {
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05));
-  background-size: 200%;
-  animation: bg-pan 3s infinite linear;
-  border-radius: 7px;
-  padding: 170px 100px;
+.albums p {
+  margin-bottom: 20px;
+}
+.albums .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  cursor: pointer;
+}
+.albums .close ion-icon {
+  font-size: 2em;
 }
 
 .movies {
@@ -155,13 +205,4 @@
 }
 .movies .movie .filled {
   color: #0084ff;
-}
-
-@keyframes bg-pan {
-  from {
-    background-position-x: 0%;
-  }
-  to {
-    background-position-x: 200%;
-  }
 }/*# sourceMappingURL=main.css.map */

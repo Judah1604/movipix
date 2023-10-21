@@ -49,7 +49,13 @@ export default function MovieDetails() {
     }
 
     return (
-        <div className={details.status ? "details active" : "details"}>
+        <div
+            className={
+                details.status
+                    ? "details panel-overlay active"
+                    : "details panel-overlay"
+            }
+        >
             <div className="banner">
                 <div
                     className={

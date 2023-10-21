@@ -59,7 +59,7 @@ export default function Home() {
     const newGenres = genres.map((genre) => genre.name);
 
     return (
-        <div className="main">
+        <div>
             <div className="banner">
                 <Confirmation confirmation={confirmation} />
                 <div
