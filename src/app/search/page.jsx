@@ -98,7 +98,7 @@ function Search() {
                     </div>
                 )}
                 {!query && popularMovies.length === 0 ? (
-                    <div className="loader-wrapper mt-5">
+                    <div className="loader-wrapper mt-4">
                         <div className="loader"></div>
                         <div className="loader"></div>
                         <div className="loader"></div>
