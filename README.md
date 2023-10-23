@@ -9,6 +9,14 @@ This is a movies site created for the purpose of practicing NextJS. It is powere
 - You can view movie details by clicking the poster image.
 - You can save movies to favourites and view your favourites by visiting the albums page
 
+# Tools 
+
+- HTML
+- React
+- Bootstrap
+- SASS
+- Next JS
+
 # Screenshot
 
 ![Movipix](movipix.png)
