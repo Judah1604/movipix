@@ -25,23 +25,19 @@ function Navbar() {
         },
     ];
 
-    const closeDialogs = () => {
-        dispatch(changeDetails({ id: 0, status: false }));
-
-        for (const item of items) {
-            if (item.isAlbums) {
-                dispatch(changeAlbumsStatus(true));
-            }
-        }
-    };
-
     return (
         <div className="navbar">
             {items.map((item, index) => (
                 <Link
                     href={item.linkUrl ? item.linkUrl : "/"}
                     key={index}
-                    onClick={closeDialogs}
+                    onClick={() => {
+                        if (item.isAlbums) {
+                            dispatch(changeAlbumsStatus(true));
+                        } else {
+                            dispatch(changeDetails({ id: 0, status: false }));
+                        }
+                    }}
                 >
                     <div className="menuItem">
                         <ion-icon
